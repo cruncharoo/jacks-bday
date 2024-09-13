@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #00008b, #add8e6); /* Light blue to dark blue */
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .countdown {
+            font-size: calc(1.5rem + 2vw);
+            font-weight: bold;
+            max-width: 80%; /* Ensure it doesn't overflow the viewport */
+            word-wrap: break-word; /* Break long words */
+        }
+        .st0{fill:#D00085;}
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <p><h1 id="main-text"></h1>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            let jack_month = 11
+            let jack_day = 23
+            let targetDate
+       
+            if (now.getMonth() == jack_month && now.getDate() > jack_day) {
+                targetDate = new Date(now.getFullYear() + 1, jack_month, jack_day, 23, 59, 59); 
+            } else {
+                targetDate = new Date(now.getFullYear(), jack_month, jack_day, 23, 59, 59); 
+            }
+
+            const timeDiff = targetDate - now;
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+            if (days == 0) {
+                document.getElementById('main-text').textContent = 
+                    `Jack's birthday is today!`;
+                return;
+            }
+            else {
+                document.getElementById('main-text').textContent = 
+                    `There are ${days} days until Jack's birthday`;
+            }
+        }
+
+        updateCountdown(); // Initial call to display countdown immediately
+    </script>
+</body>
+</html>
