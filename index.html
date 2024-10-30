@@ -56,7 +56,7 @@
             }
             else {
                 document.getElementById('main-text').textContent = 
-                    `There are ${days} days until Jack's birthday`;
+                    `There ${days === 1 ? 'is': 'are'} ${days} ${days === 1 ? 'day' :'days'} until Jack's birthday`;
             }
         }
 
